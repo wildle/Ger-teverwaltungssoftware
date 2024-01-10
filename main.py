@@ -15,6 +15,20 @@ current_device_example = st.selectbox(
     'Gerät auswählen',
     options = ["Gerät_A", "Gerät_B"], key="sbDevice_example")
 
+tab1, tab2, tab3, tab4 = st.tabs(["Geräte-Verwaltung", "Nutzer-Verwaltung", "Reservierungssystem", "Wartungs-Management"])
+with tab1:
+    st.header("Geräte-Verwaltung")
+    
+with tab2:
+    st.header("Nutzer-Verwaltung")
+    
+with tab3:
+    st.header("Reservierungssystem")
+
+with tab4:
+    st.header("Wartungs-Management")
+
+
 # Eine Auswahlbox mit Datenbankabfrage, das Ergebnis wird in current_device gespeichert
 devices_in_db = find_devices()
 
