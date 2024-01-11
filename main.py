@@ -109,17 +109,14 @@ with tab4:
 
     st.header("Wartungskosten pro Quartal")
 
-    # Annahme: Dummy-Kosten pro Wartung
-    cost_per_maintenance = 1000
+    daten = {'Quartal 1': [0],
+         'Quartal 2': [0],
+         'Quartal 3': [0],
+         'Quartal 4': [0]}
 
-    for device in devices:
-        next_maintenance_date = device.last_maintenance_date + timedelta(days=90)
-        quarter_start_date = datetime(next_maintenance_date.year, ((next_maintenance_date.month - 1) // 3) * 3 + 1, 1)
-        quarter_end_date = quarter_start_date + timedelta(days=89)
+    output_df = pd.DataFrame(daten)
 
-        st.write(f"Quartal für {device.device_name}: {quarter_start_date.strftime('%Y-%m-%d')} bis {quarter_end_date.strftime('%Y-%m-%d')}")
-        st.write(f"Geplante Wartungskosten: {cost_per_maintenance}")
-
+    st.table(output_df)
 
 
 # Eine Auswahlbox mit Datenbankabfrage, das Ergebnis wird in current_device gespeichert
