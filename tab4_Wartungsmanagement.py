@@ -1,8 +1,10 @@
 import streamlit as st
+import pandas as pd
 def wartungsmanagement(tab):
     with tab:
         st.header("Wartungs-Management")
-
+        
+        """
         devices = [
             Device("Gerät A", None),
             Device("Gerät B", None),
@@ -18,6 +20,7 @@ def wartungsmanagement(tab):
 
         df = pd.DataFrame(data, columns=['Gerät', 'Nächster Wartungstermin'])
         st.table(df)
+        """
 
         st.header("Wartungskosten pro Quartal")
 
