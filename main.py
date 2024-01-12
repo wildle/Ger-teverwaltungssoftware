@@ -5,6 +5,7 @@ import pandas as pd
 from queries import find_devices
 from devices import Device
 from datetime import datetime, timedelta
+from Nutzerverwaltung import user_management
 
 
 
@@ -14,6 +15,9 @@ st.write("# Gerätemanagement")
 
 tab1, tab2, tab3, tab4 = st.tabs(["Geräte-Verwaltung", "Nutzer-Verwaltung", "Reservierungssystem", "Wartungs-Management"])
 
+
+# Aufruf der der Nutzer-Verwaltung
+user_management(tab2)
 
 # Eine Auswahlbox mit Datenbankabfrage, das Ergebnis wird in current_device gespeichert
 devices_in_db = find_devices()
