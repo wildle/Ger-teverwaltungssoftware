@@ -1,3 +1,4 @@
+import streamlit as st
 def reservation_system(tab):
     with tab:
         st.write("## Geräteauswahl")

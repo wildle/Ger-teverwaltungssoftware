@@ -1,3 +1,4 @@
+import streamlit as st
 def device_management(tab):
     with tab:
         st.header("Geräte-Verwaltung")

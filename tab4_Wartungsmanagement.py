@@ -1,3 +1,4 @@
+import streamlit as st
 def wartungsmanagement(tab):
     with tab:
         st.header("Wartungs-Management")
