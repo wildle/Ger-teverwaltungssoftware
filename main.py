@@ -7,8 +7,8 @@ from devices import Device
 from datetime import datetime, timedelta
 from Nutzerverwaltung import user_management
 from Geraeteverwaltung import device_management
-
-
+from Wartungsmanagement import wartungsmanagement
+from Reservierungssystem import reservation_system
 
 # Eine Überschrift der ersten Ebene
 st.write("# Gerätemanagement")
@@ -18,6 +18,8 @@ tab1, tab2, tab3, tab4 = st.tabs(["Geräte-Verwaltung", "Nutzer-Verwaltung", "Re
 device_management(tab1)
 # Aufruf der der Nutzer-Verwaltung
 user_management(tab2)
+reservation_system(tab3)
+wartungsmanagement(tab4)
 
 
 # Eine Auswahlbox mit Datenbankabfrage, das Ergebnis wird in current_device gespeichert
