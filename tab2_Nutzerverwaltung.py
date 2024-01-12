@@ -16,6 +16,3 @@ def user_management(tab):
                     st.write(f"E-Mail: {user_email}")
                     st.write(f"Rolle: {user_role}")
                     st.success("Nutzer erfolgreich angelegt!")
-
-# Verwendung der Funktion
-user_management(tab2)

@@ -5,10 +5,10 @@ import pandas as pd
 from queries import find_devices
 from devices import Device
 from datetime import datetime, timedelta
-from Nutzerverwaltung import user_management
-from Geraeteverwaltung import device_management
-from Wartungsmanagement import wartungsmanagement
-from Reservierungssystem import reservation_system
+from tab2_Nutzerverwaltung import user_management
+from tab1_Geraeteverwaltung import device_management
+from tab4_Wartungsmanagement import wartungsmanagement
+from tab3_Reservierungssystem import reservation_system
 
 # Eine Überschrift der ersten Ebene
 st.write("# Gerätemanagement")

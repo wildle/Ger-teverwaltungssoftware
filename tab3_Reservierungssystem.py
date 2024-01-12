@@ -15,6 +15,3 @@ def reservation_system(tab):
             st.write(f"Zeitraum: {reservation_period}")
             st.write(f"Grund: {reservation_reason}")
             st.success("Gerät erfolgreich gespeichert!")
-
-# Verwendung der Funktion
-reservation_system(tab3)

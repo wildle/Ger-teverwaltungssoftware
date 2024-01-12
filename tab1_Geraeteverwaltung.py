@@ -1,5 +1,5 @@
 def device_management(tab):
-    with tab1:
+    with tab:
         st.header("Geräte-Verwaltung")
 
         if st.button("Gerät anlegen"):
@@ -32,5 +32,3 @@ def device_management(tab):
                 'Gerät auswählen',
                 options = ["Gerät_A", "Gerät_B"], key="sbDevice")
                 submitted = st.form_submit_button("auswählen")
-
-device_management(tab1)

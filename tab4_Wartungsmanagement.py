@@ -1,5 +1,5 @@
 def wartungsmanagement(tab):
-    with tab4:
+    with tab:
         st.header("Wartungs-Management")
 
         devices = [
@@ -28,6 +28,3 @@ def wartungsmanagement(tab):
         output_df = pd.DataFrame(daten)
 
         st.table(output_df)
-
-
-wartungsmanagement(tab4)
