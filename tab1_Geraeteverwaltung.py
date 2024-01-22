@@ -1,4 +1,6 @@
 import streamlit as st
+from devices import Device 
+
 def device_management(tab):
     with tab:
         st.header("Geräte-Verwaltung")
@@ -15,21 +17,35 @@ def device_management(tab):
 
                 submitted = st.form_submit_button("Speichern")
                 if submitted:
-                    # Schritt 5: System speichert Gerätedaten
-                    st.write(f"Gerät angelegt mit folgenden Daten:")
-                    st.write(f"ID: {device_id}")
-                    st.write(f"Gerätename: {device_name}")
-                    st.write(f"Nutzer: {user}")
-                    st.write(f"Letztes Update: {last_update}")
-                    st.write(f"Erstellungsdatum: {creation_date}")
-                    st.write(f"Enddatum: {end_of_life}")
+                    # Create an instance of the Device class and store the data
+                    new_device = Device(device_name=device_name, managed_by_user_id=user)
+                    new_device.store_data()
+
                     st.success("Gerät erfolgreich gespeichert!")
 
         if st.button("Gerät ändern"):
             with st.form("Gerät ändern"):
                 st.write("Gerät auswählen")
 
+                # Load existing devices from the database
+                existing_devices = Device.db_connector.all()
+
                 current_device_example = st.selectbox(
-                'Gerät auswählen',
-                options = ["Gerät_A", "Gerät_B"], key="sbDevice")
+                    'Gerät auswählen',
+                    options=[device['device_name'] for device in existing_devices], key="sbDevice")
+
                 submitted = st.form_submit_button("auswählen")
+
+                if submitted:
+                    st.write(f"Ausgewähltes Gerät: {current_device_example}")
+
+                    # You can load the selected device's data and display it
+                    selected_device = Device.load_data_by_device_name(current_device_example)
+
+                    if selected_device:
+                        st.write("Daten des ausgewählten Geräts:")
+                        st.write(f"Gerätename: {selected_device.device_name}")
+                        st.write(f"Managed by User ID: {selected_device.managed_by_user_id}")
+                        st.write(f"Status: {'Aktiv' if selected_device.is_active else 'Inaktiv'}")
+                    else:
+                        st.warning("Gerät nicht gefunden.")

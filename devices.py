@@ -52,24 +52,3 @@ class Device():
             return cls(data['device_name'], data['managed_by_user_id'])
         else:
             return None
-
-
-
-if __name__ == "__main__":
-    # Create a device
-    device1 = Device("Device1", "one@mci.edu")
-    device2 = Device("Device2", "two@mci.edu") 
-    device3 = Device("Device3", "two@mci.edu") 
-    device1.store_data()
-    device2.store_data()
-    device3.store_data()
-    device4 = Device("Device3", "four@mci.edu") 
-    device4.store_data()
-
-    loaded_device = Device.load_data_by_device_name('Device2')
-    if loaded_device:
-        print(f"Loaded Device: {loaded_device}")
-    else:
-        print("Device not found.")
-
-    

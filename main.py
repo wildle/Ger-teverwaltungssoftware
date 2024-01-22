@@ -15,6 +15,7 @@ st.write("# Gerätemanagement")
 
 tab1, tab2, tab3, tab4 = st.tabs(["Geräte-Verwaltung", "Nutzer-Verwaltung", "Reservierungssystem", "Wartungs-Management"])
 
+
 device_management(tab1)
 # Aufruf der der Nutzer-Verwaltung
 user_management(tab2)
