@@ -1,14 +1,15 @@
+from database import Database
 from tinydb import TinyDB, Query
 
 class User:
-    def __init__(self, id, name, role) -> None:
+    def __init__(self, id, name, role):
         self.id = id
         self.name = name
         self.role = role
-        self.db = TinyDB('db.json')  # replace 'db.json' with the path to your database file
+        self.db = Database('database.json')
 
     def store_data(self):
-        self.db.insert({'id': self.id, 'name': self.name, 'role': self.role})
+        self.db.insert('users', {'id': self.id, 'name': self.name, 'role': self.role})
 
     def update_data(self, name=None, role=None):
         User = Query()
@@ -23,7 +24,6 @@ class User:
         User = Query()
         self.db.remove(User.id == self.id)
 
-    @staticmethod
-    def load_data_by_user_id(id):
+    def load_data_by_user_id(self, id):
         User = Query()
-        return db.search(User.id == id)
+        return self.db.search(User.id == id)
