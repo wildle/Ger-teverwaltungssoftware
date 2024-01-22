@@ -1,3 +1,5 @@
+from users import User
+
 import streamlit as st
 def user_management(tab):
     with tab:
