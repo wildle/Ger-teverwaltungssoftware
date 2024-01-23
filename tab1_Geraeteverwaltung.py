@@ -17,10 +17,8 @@ def device_management(tab):
 
                 submitted = st.form_submit_button("Speichern")
                 if submitted:
-                    # Create an instance of the Device class and store the data
                     new_device = Device(device_name=device_name, managed_by_user_id=user)
                     new_device.store_data()
-
                     st.success("Gerät erfolgreich gespeichert!")
 
         if st.button("Gerät ändern"):
