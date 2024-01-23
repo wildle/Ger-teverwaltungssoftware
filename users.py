@@ -1,15 +1,17 @@
 from database import Database
 from tinydb import TinyDB, Query
+from uuid import uuid4
 
 class User:
-    def __init__(self, id, name, role):
-        self.id = id
+    def __init__(self, name, email, role):
+        self.id = str(uuid4())  # Generate a unique ID
         self.name = name
+        self.email = email
         self.role = role
         self.db = Database('database.json')
 
     def store_data(self):
-        self.db.insert('users', {'id': self.id, 'name': self.name, 'role': self.role})
+        self.db.insert('users', {'id': self.id, 'name': self.name, 'email': self.email, 'role': self.role})
 
     def update_data(self, name=None, role=None):
         User = Query()
