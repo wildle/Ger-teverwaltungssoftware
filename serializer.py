@@ -14,6 +14,17 @@ class DateSerializer(Serializer):
     def decode(self, s):
         return datetime.fromisoformat(s).date()
 
+class TimeSerializer(Serializer):
+    # The class this serializer handles --> must be time instead of datetime.time
+    OBJ_CLASS = time
+    
+    def encode(self, obj):
+        return obj.isoformat()
+
+    def decode(self, s):
+        return time.fromisoformat(s)
+
 serializer = SerializationMiddleware(JSONStorage)
 serializer.register_serializer(DateTimeSerializer(), 'TinyDateTime')
 serializer.register_serializer(DateSerializer(), 'TinyDate')
+serializer.register_serializer(TimeSerializer(), 'TinyTime')
