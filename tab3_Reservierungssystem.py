@@ -1,41 +1,30 @@
 import streamlit as st
-def reservation_system():
-    st.title("Reservierungssystem")
-    reservation_system = ReservationSystem()
+def reservation_system(tab):
+    with tab:
+        st.header("Reservierungssystem")
 
-    tab = st.tabs(2, ["Reservierung anlegen/ändern", "Reservierung anzeigen"])
+        if st.button("Reservierung anlegen/ändern"):
+            with st.form("Reservierung anzeigen"):
+                 # Eine Auswahlbox mit hard-gecoded Optionen, das Ergebnis wird in current_device_example gespeichert
+                current_device_example = st.selectbox('Gerät auswählen',options = ["Neues_Gerät", "Gerät_A", "Gerät_B"], key="sbDevice_example")
+                st.header("Reservierungssystem")
 
-    if tab == "Reservierung anlegen/ändern":
-        with st.form("Reservierung anlegen/ändern"):
-            current_device = st.selectbox('Gerät auswählen', options=["Neues_Gerät", "Gerät_A", "Gerät_B"], key="sbDevice")
-            reservation_period = st.text_input("Zeitraum")
-            reservation_reason = st.text_area("Grund")
-            submitted = st.form_submit_button("Speichern")
+                reservation_period =  st.text_input("Zeitraum")
+                reservation_reason = st.text_area("Grund")
 
-            if submitted:
-                reservation_system.create_reservation(current_device, reservation_period, reservation_reason)
-                st.success("Reservierung erfolgreich gespeichert!")
+                submitted = st.form_submit_button("Speichern")
+                if submitted:
+                    # Schritt 5: System speichert Reservierungsdaten
+                    st.write(f"Reservierung angelegt/geändert mit folgenden Daten:")
+                    st.write(f"Zeitraum: {reservation_period}")
+                    st.write(f"Grund: {reservation_reason}")
+                    st.success("Gerät erfolgreich gespeichert!")
 
-    elif tab == "Reservierung anzeigen":
-        with st.form("Reservierung anzeigen"):
-            selected_device = st.selectbox('Gerät auswählen', options=["Gerät_A", "Gerät_B"], key="sbDevice_show")
-            submitted_show = st.form_submit_button("Anzeigen")
-
-            if submitted_show:
-                reservations = reservation_system.get_reservations(selected_device)
-                if reservations:
-                    st.header(f"Reservierungen für {selected_device}")
-                    for reservation in reservations:
-                        st.write(f"Zeitraum: {reservation['period']}")
-                        st.write(f"Grund: {reservation['reason']}")
-                        st.write("---")
-                else:
-                    st.warning("Keine Reservierungen für das ausgewählte Gerät gefunden.")
-
-if __name__ == "__main__":
-    main()
-
-
+        if st.button("Reservierung anzeigen"):
+            with st.form("Reservierung anzeigen"):
+                # Eine Auswahlbox mit hard-gecoded Optionen, das Ergebnis wird in current_device_example gespeichert
+                current_device_example = st.selectbox('Gerät auswählen',options = ["Gerät_A", "Gerät_B"], key="sbDevice_example")
+                submitted = st.form_submit_button("auswählen")
 
 
        
