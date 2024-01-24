@@ -11,7 +11,7 @@ def device_management(tab):
                 user = st.text_input("Nutzer")
                 last_update = st.text_input("Letzte Änderung des Geräts")
                 creation_date = st.text_input("Erstellungsdatum des Geräts")
-                end_of_life = st.text_input("Datum, ab welchem das Gerät nicht mehr gewartet wird")
+                end_of_life = st.text_input("Datum, ab welchem das Gerät nicht mehr gewartet wurde")
 
                 submitted = st.form_submit_button("Speichern")
                 if submitted:

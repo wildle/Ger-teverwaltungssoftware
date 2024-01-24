@@ -29,3 +29,24 @@ class User:
     def load_data_by_user_id(self, id):
         User = Query()
         return self.db.search(User.id == id)
+
+    @classmethod
+    def load_data_by_user_name(cls, user_name):
+        # Initialize the database
+        db = Database('database.json')
+
+        # Load the data from the database
+        data = db.all('users')
+
+        # Find the user with the given name
+        for user_data in data:
+            if user_data['name'] == user_name:
+                # Create a new User object and return it
+                return cls(user_data['name'], user_data['email'], user_data['role'])
+
+        # If no user with the given name was found, return None
+        return None
+
+if __name__ == "__main__":
+    user = User('Test User', 'testuser@example.com', 'test role')
+    user.store_data()

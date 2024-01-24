@@ -13,8 +13,10 @@ def user_management(tab):
                 user_role = st.selectbox("Rolle", ["Geräteverantwortlicher", "Reservierer"])
 
                 submitted = st.form_submit_button("bestätigen")
+                st.write(f"Submitted: {submitted}")  # Debugging output
                 if submitted:
                     new_user = User(user_name, user_email, user_role)
+                    st.write(f"New user: {new_user.__dict__}")  # Debugging output
                     new_user.store_data()
                     st.write(f"Nutzer angelegt mit folgenden Daten:")
                     st.write(f"Nutzername: {user_name}")

@@ -1,5 +1,5 @@
 ### Erste Streamlit App
-
+import time
 import streamlit as st
 import pandas as pd
 from queries import find_devices
@@ -9,6 +9,14 @@ from tab2_Nutzerverwaltung import user_management
 from tab1_Geraeteverwaltung import device_management
 from tab4_Wartungsmanagement import wartungsmanagement
 from tab3_Reservierungssystem import reservation_system
+from users import User  # Stellen Sie sicher, dass Sie den User importiert haben
+
+# Create a new session_state if it doesn't exist
+if 'user' not in st.session_state:
+    st.session_state.user = User('Test User', 'testuser@example.com', 'test role')
+
+# Use the user from session_state instead of creating a new one
+user = st.session_state.user
 
 # Eine Überschrift der ersten Ebene
 st.write("# Gerätemanagement")
@@ -21,7 +29,6 @@ user_management(tab2)
 reservation_system(tab3)
 wartungsmanagement(tab4)
 
-
 # Eine Auswahlbox mit Datenbankabfrage, das Ergebnis wird in current_device gespeichert
 devices_in_db = find_devices()
 
@@ -33,7 +40,6 @@ if devices_in_db:
     if current_device_name in devices_in_db:
         loaded_device = Device.load_data_by_device_name(current_device_name)
         st.write(f"Loaded Device: {loaded_device}")
-
 
     with st.form("Device"):
         st.write(loaded_device.device_name)
