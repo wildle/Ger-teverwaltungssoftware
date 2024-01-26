@@ -5,10 +5,11 @@ import pandas as pd
 from queries import find_devices
 from devices import Device
 from datetime import datetime, timedelta
-from tab2_Nutzerverwaltung import user_management
 from tab1_Geraeteverwaltung import device_management
-from tab4_Wartungsmanagement import wartungsmanagement
+from tab2_Nutzerverwaltung import user_management
 from tab3_Reservierungssystem import reservation_system
+from tab4_Wartungsmanagement import wartungsmanagement
+
 from users import User  # Stellen Sie sicher, dass Sie den User importiert haben
 
 # Create a new session_state if it doesn't exist
@@ -24,7 +25,6 @@ st.write("# Gerätemanagement")
 tab1, tab2, tab3, tab4 = st.tabs(["Geräte-Verwaltung", "Nutzer-Verwaltung", "Reservierungssystem", "Wartungs-Management"])
 
 device_management(tab1)
-# Aufruf der der Nutzer-Verwaltung
 user_management(tab2)
 reservation_system(tab3)
 wartungsmanagement(tab4)
