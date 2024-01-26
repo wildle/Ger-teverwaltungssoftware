@@ -4,7 +4,7 @@ from uuid import uuid4
 
 class User:
 
-    db = Database(r'C:\Users\Lenard\Documents\Mechatronik, Design & Innovation Lokal\3. Semester_WS2324\Softwaredesign\Geraeteverwaltungssoftware\database.json')
+    db = Database('database.json')
     def __init__(self, name, email, role):
         self.id = str(uuid4())  # Generate a unique ID
         self.name = name
