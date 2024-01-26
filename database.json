@@ -1,0 +1,1 @@
+{"devices": {"1": {"device_name": "Device1", "managed_by_user_id": "one@mci.edu", "is_active": true}, "2": {"device_name": "Device2", "managed_by_user_id": "two@mci.edu", "is_active": true}, "3": {"device_name": "Device3", "managed_by_user_id": "three@mci.edu", "is_active": true}}}
