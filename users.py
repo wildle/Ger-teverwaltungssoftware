@@ -3,12 +3,14 @@ from tinydb import TinyDB, Query
 from uuid import uuid4
 
 class User:
+
+    db = Database(r'C:\Users\Lenard\Documents\Mechatronik, Design & Innovation Lokal\3. Semester_WS2324\Softwaredesign\Geraeteverwaltungssoftware\database.json')
     def __init__(self, name, email, role):
         self.id = str(uuid4())  # Generate a unique ID
         self.name = name
         self.email = email
         self.role = role
-        self.db = Database('database.json')
+        
 
     def store_data(self):
         self.db.insert('users', {'id': self.id, 'name': self.name, 'email': self.email, 'role': self.role})
@@ -33,7 +35,7 @@ class User:
     @classmethod
     def load_data_by_user_name(cls, user_name):
         # Initialize the database
-        db = Database('database.json')
+        db = cls.db
 
         # Load the data from the database
         data = db.all('users')
