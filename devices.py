@@ -43,3 +43,8 @@ class Device():
             return cls(data['device_name'], data['managed_by_user_id'], data['end_of_life'])
         else:
             return None
+
+    @classmethod
+    def delete_device(cls, device_name):
+        DeviceQuery = Query()
+        cls.db_connector.remove(DeviceQuery.device_name == device_name)
