@@ -40,7 +40,8 @@ class Device():
 
         if result:
             data = result[0]
-            return cls(data['device_name'], data['managed_by_user_id'], data['end_of_life'])
+            end_of_life = data['end_of_life'] if 'end_of_life' in data else None
+            return cls(data['device_name'], data['managed_by_user_id'], end_of_life)
         else:
             return None
 
