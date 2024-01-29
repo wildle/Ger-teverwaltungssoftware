@@ -22,6 +22,11 @@ class User:
         User = Query()
         cls.table.remove(User.user_id == user_id)
 
+    @classmethod
+    def update_user(cls, user_id, new_data):
+        User = Query()
+        cls.table.update(new_data, User.user_id == user_id)
+
     def __str__(self):
         return f'User({self.user_id}, {self.username}, {self.email})'
 
