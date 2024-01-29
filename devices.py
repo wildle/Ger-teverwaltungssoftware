@@ -49,3 +49,9 @@ class Device():
     def delete_device(cls, device_name):
         DeviceQuery = Query()
         cls.db_connector.remove(DeviceQuery.device_name == device_name)
+
+    @classmethod
+    def get_all_device_names(cls):
+        DeviceQuery = Query()
+        all_devices = cls.db_connector.search(DeviceQuery.device_name.exists())
+        return [device['device_name'] for device in all_devices]

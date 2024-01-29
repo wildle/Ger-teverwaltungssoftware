@@ -27,8 +27,15 @@ class User:
         User = Query()
         cls.table.update(new_data, User.user_id == user_id)
 
+    @classmethod
+    def get_all_user_emails(cls):
+        UserQuery = Query()
+        all_users = cls.table.search(UserQuery.email.exists())
+        return [user['email'] for user in all_users]
+
     def __str__(self):
         return f'User({self.user_id}, {self.username}, {self.email})'
 
     def __repr__(self):
         return self.__str__()
+        
