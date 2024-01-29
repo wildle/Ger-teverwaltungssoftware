@@ -3,7 +3,7 @@ from queries import QueryDB
 from devices import Device
 from device_management import display_device_management
 from user_management import display_user_management
-from reservation_management import display_reservation_system
+from reservation_management import display_reservation_management
 from maintenance_management import display_maintenance_management
 
 # Create a sidebar
@@ -18,6 +18,6 @@ if tab == "Geräteverwaltung":
 elif tab == "Nutzerverwaltung":
     display_user_management()
 elif tab == "Reservierungssystem":
-    display_reservation_system()
+    display_reservation_management()
 elif tab == "Wartungsmanagement":
     display_maintenance_management()
