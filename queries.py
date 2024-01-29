@@ -29,6 +29,33 @@ class QueryDB:
 
         return result
 
+    @classmethod
+    def insert_device(cls, device):
+        """Insert a new device in the database."""
+        devices_table = cls.db_connector.table('devices')
+        devices_table.insert(device)
+
+    @classmethod
+    def search_device(cls, device_name):
+        """Search for a device in the database."""
+        devices_table = cls.db_connector.table('devices')
+        DeviceQuery = Query()
+        return devices_table.search(DeviceQuery.device_name == device_name)
+
+    @classmethod
+    def update_device(cls, device_name, new_data):
+        """Update a device in the database."""
+        devices_table = cls.db_connector.table('devices')
+        DeviceQuery = Query()
+        devices_table.update(new_data, DeviceQuery.device_name == device_name)
+
+    @classmethod
+    def remove_device(cls, device_name):
+        """Remove a device from the database."""
+        devices_table = cls.db_connector.table('devices')
+        DeviceQuery = Query()
+        devices_table.remove(DeviceQuery.device_name == device_name)
+
 if __name__ == "__main__":
     print(QueryDB.find_devices())
     print(QueryDB.find_users())
