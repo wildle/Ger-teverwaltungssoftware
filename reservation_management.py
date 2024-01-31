@@ -21,3 +21,12 @@ def display_reservation_management():
         new_reservation.store_data()
         st.success(f"Reservierung für {device_name} wurde erfolgreich angelegt.")
        
+    all_reservations = Reservation.get_all_reservations()
+
+    if all_reservations:
+        st.subheader("Alle Reservierungen")
+        for reservation in all_reservations:
+            st.write(f"Gerät: {reservation['device_name']}, Nutzer: {reservation['user_email']}, "
+                     f"Startdatum: {reservation['start_date']}, Enddatum: {reservation['end_date']}")
+    else:
+        st.info("Es sind keine Reservierungen vorhanden.")

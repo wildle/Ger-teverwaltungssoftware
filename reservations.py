@@ -34,10 +34,9 @@ class Reservation:
         ReservationQuery = Query()
         cls.table.remove(ReservationQuery.user_email == user_email)
 
+    @classmethod
     def get_all_reservations(cls):
-        ReservationQuery = Query()
-        all_reservations = cls.table.search(ReservationQuery.user_email.exists())
-        return all_reservations
+        return cls.db_connector.all()
 
     def __str__(self):
         return f'Reservation({self.device_name}, {self.user_email}, {self.start_date}, {self.end_date})'
