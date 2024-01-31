@@ -1,17 +1,17 @@
 import os
 from datetime import datetime
-from users import User
 from tinydb import TinyDB, Query
 from serializer import serializer
 
-class Device():
+class Device:
     db_connector = TinyDB(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'database.json'), storage=serializer).table('devices')
 
-    def __init__(self, device_name : str, managed_by_user_id : str, end_of_life : str):
+    def __init__(self, device_name: str, managed_by_user_id: str, end_of_life: str, quarterly_costs: float = 0.0):
         self.device_name = device_name
         self.managed_by_user_id = managed_by_user_id
         self.is_active = True
         self.end_of_life = end_of_life
+        self.quarterly_costs = quarterly_costs
         self.__creation_date = datetime.now()
         self.__last_update = datetime.now()
 
@@ -41,7 +41,8 @@ class Device():
         if result:
             data = result[0]
             end_of_life = data['end_of_life'] if 'end_of_life' in data else None
-            return cls(data['device_name'], data['managed_by_user_id'], end_of_life)
+            quarterly_costs = data['quarterly_costs'] if 'quarterly_costs' in data else 0.0
+            return cls(data['device_name'], data['managed_by_user_id'], end_of_life, quarterly_costs)
         else:
             return None
 
