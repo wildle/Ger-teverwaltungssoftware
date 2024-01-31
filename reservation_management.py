@@ -18,8 +18,6 @@ def display_reservation_management():
     # Wenn das Formular abgeschickt wird, erstelle eine neue Reservierung und speichere sie in der Datenbank
     if submit_button:
         new_reservation = Reservation(device_name=device_name, user_email=user_email, start_date=reservation_start, end_date=reservation_end)
-        if new_reservation.is_valid():
-            new_reservation.store_data()
-            st.success(f"Reservierung für {device_name} wurde erfolgreich angelegt.")
-        else:
-            st.error("Die Reservierung ist ungültig. Bitte überprüfen Sie die Daten und versuchen Sie es erneut.")
+        new_reservation.store_data()
+        st.success(f"Reservierung für {device_name} wurde erfolgreich angelegt.")
+       
